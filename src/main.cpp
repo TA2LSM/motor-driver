@@ -11,6 +11,7 @@
 
 //---------------- User Libraries ------------------
 #include "main.h"
+#include "functions.h"
 
 
 //--------------------------------------------------
@@ -44,12 +45,12 @@ void setup(void)
   pinMode(DEF_STATUS_LED_PIN, OUTPUT);
 
   // Interrupts
-  // attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), buttonRead, FALLING); // 16 no'lu pin interrupt yapılamaz
+  attachInterrupt(digitalPinToInterrupt(DEF_MOTOR1_STEP_PIN), stepRead, RISING);
 
   // Pin outputs at startup
   digitalWrite(DEF_PWM1_OUT, LOW);
   digitalWrite(DEF_PWM2_OUT, LOW);
-  digitalWrite(DEF_STATUS_LED_PIN, LOW);
+  digitalWrite(DEF_STATUS_LED_PIN, DEF_LED_OFF);
 
   //--- Enable WDT -----------
   // #if defined(ESP8266)
@@ -62,6 +63,8 @@ void setup(void)
   
   delay(500);
   //--------------------------
+
+  // initTIM2(1000000);    // 1 sec
 }
 
 //----------------- Main Loop -------------------------
@@ -91,6 +94,7 @@ void loop(void)
   {
     task100msCnt = millis();
 
+
   }
 
   //---------------------------------------
@@ -98,7 +102,7 @@ void loop(void)
   {
     task500msCnt = millis();
    
-
+    // digitalWrite(DEF_STATUS_LED_PIN, !digitalRead(DEF_STATUS_LED_PIN)); 
   }
 
   //---------------------------------------
@@ -106,7 +110,7 @@ void loop(void)
   {
     task1000msCnt = millis();
 
-    digitalWrite(DEF_STATUS_LED_PIN, !digitalRead(DEF_STATUS_LED_PIN));
+    
   }
 
   //---------------------------------------

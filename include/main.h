@@ -16,4 +16,13 @@
 
 #define DEF_STATUS_LED_PIN                      PC13
 
+
+#define DEF_LED_DRIVE_LOW
+#ifdef DEF_LED_DRIVE_LOW
+  #define DEF_LED_OFF                           HIGH
+  #define DEF_LED_ON                            LOW
+#else
+  #define DEF_LED_OFF                           LOW
+  #define DEF_LED_ON                            HIGH
+#endif
 #endif
