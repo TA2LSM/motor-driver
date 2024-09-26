@@ -11,10 +11,11 @@
 #define DEF_MOTOR1_STEP_PIN                     PA5
 
 // --- Outputs ---
-#define DEF_PWM1_OUT                            PA0
-#define DEF_PWM2_OUT                            PA1
+#define DEF_PWM1_OUT                            PB0
+#define DEF_PWM2_OUT                            PB1
 
 #define DEF_STATUS_LED_PIN                      PC13
+
 
 
 #define DEF_LED_DRIVE_LOW

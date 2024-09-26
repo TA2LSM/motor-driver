@@ -45,7 +45,7 @@ void setup(void)
   pinMode(DEF_STATUS_LED_PIN, OUTPUT);
 
   // Interrupts
-  attachInterrupt(digitalPinToInterrupt(DEF_MOTOR1_STEP_PIN), stepRead, RISING);
+  // attachInterrupt(digitalPinToInterrupt(DEF_MOTOR1_STEP_PIN), stepRead, RISING);
 
   // Pin outputs at startup
   digitalWrite(DEF_PWM1_OUT, LOW);
@@ -61,10 +61,11 @@ void setup(void)
   //   esp_task_wdt_add(NULL);                               //add current thread to WDT watch  
   // #endif
   
-  delay(500);
+  delay(100);
   //--------------------------
 
   // initTIM2(1000000);    // 1 sec
+  initTIM3(1000);
 }
 
 //----------------- Main Loop -------------------------
@@ -102,7 +103,7 @@ void loop(void)
   {
     task500msCnt = millis();
    
-    // digitalWrite(DEF_STATUS_LED_PIN, !digitalRead(DEF_STATUS_LED_PIN)); 
+    digitalWrite(DEF_STATUS_LED_PIN, !digitalRead(DEF_STATUS_LED_PIN)); 
   }
 
   //---------------------------------------
